@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .perspective-2000 {
+    perspective: 2000px;
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Custom Paper Textures & Book Spine Gradients */
+.book-spine-shadow {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.16) 0%,
+    rgba(0, 0, 0, 0.08) 2%,
+    rgba(0, 0, 0, 0.02) 8%,
+    transparent 20%,
+    transparent 80%,
+    rgba(0, 0, 0, 0.02) 92%,
+    rgba(0, 0, 0, 0.08) 98%,
+    rgba(0, 0, 0, 0.16) 100%
+  );
+}
+
+.book-page-shadow-left {
+  box-shadow: 
+    -6px 0 15px -4px rgba(0, 0, 0, 0.15),
+    inset -12px 0 20px -8px rgba(0, 0, 0, 0.06);
+}
+
+.book-page-shadow-right {
+  box-shadow: 
+    6px 0 15px -4px rgba(0, 0, 0, 0.15),
+    inset 12px 0 20px -8px rgba(0, 0, 0, 0.06);
+}
+
+.book-outer-stack {
+  box-shadow:
+    0 1px 1px rgba(0,0,0,0.12),
+    0 2px 2px rgba(0,0,0,0.12),
+    0 4px 4px rgba(0,0,0,0.12),
+    0 8px 16px rgba(0,0,0,0.18),
+    0 16px 32px rgba(0,0,0,0.22);
+}
+
+/* Subtle corner curl affordance */
+.page-corner-curl {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.08) 50%, rgba(0,0,0,0.03) 60%, transparent 60%);
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+/* Print Optimization */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+}
